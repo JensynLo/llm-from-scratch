@@ -1,14 +1,6 @@
-import sys
 import logging
 from pathlib import Path
-from dotenv import load_dotenv
 import argparse
-
-load_dotenv()
-
-project_root = Path(__file__).parents[3]
-sys.path.insert(0, str(project_root))
-
 from src.data import extract_urls_samples, process_large_file
 import concurrent.futures
 from scripts.utils import load_config, setup_logging

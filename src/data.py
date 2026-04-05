@@ -12,19 +12,14 @@ from collections import defaultdict
 from tqdm import tqdm
 from resiliparse.extract.html2text import extract_plain_text
 from resiliparse.parse.encoding import detect_encoding
-from dotenv import load_dotenv
+from scripts.utils import load_config
 
 nltk.download("punkt_tab")
 
-
-load_dotenv()
-nsfw_path = os.getenv("NSFW_MODEL")
-if nsfw_path is None:
-    raise ValueError("环境变量 'NSFW_MODEL' 未设置，请检查 .env 文件")
+configs = load_config("configs/data_config.yaml")
+nsfw_path = configs["paths"]["nsfw_path"]
+toxic_path = configs["paths"]["toxic_path"]
 nsfw_model = fasttext.load_model(nsfw_path)
-toxic_path = os.getenv("TOXIC_MODEL")
-if toxic_path is None:
-    raise ValueError("环境变量 'TOXIC_MODEL' 未设置，请检查 .env 文件")
 toxic_model = fasttext.load_model(toxic_path)
 
 
