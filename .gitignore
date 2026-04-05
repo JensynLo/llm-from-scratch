@@ -1,0 +1,13 @@
+/wandb
+/data
+/output
+/.claude
+/.vscode
+/checkpoints
+/
+**/__pycache__
+**/*.pyc
+**/*.pkl
+**/*.pt
+**/*.log
+**/.DS_Store
