@@ -1,0 +1,13 @@
+tokenizer:
+  vocab_size: 65536
+  special_tokens: ["<|endoftext|>"]
+
+data:
+  train: data/tokenizer/owt_train.txt
+  valid: data/tokenizer/owt_valid.txt
+  target_txt: output/wabpage_temp_cleaned.txt
+
+output:
+  tokenizer_config_path: configs/tokenizer_config.json
+  train_file_path: data/train
+  valid_file_path: data/valid

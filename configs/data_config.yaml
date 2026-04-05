@@ -1,0 +1,13 @@
+data:
+  max_samples: 4000
+  output_dir: output
+
+paths:
+  urls_path: data/data/enwiki-20240420-extracted_urls.txt
+
+output:
+  webpage_file_name: webpage_temp.txt
+  webpage_cleaned_file_name: wabpage_temp_cleaned.txt
+
+clean:
+  chunk_size: 1000

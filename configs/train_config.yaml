@@ -1,0 +1,33 @@
+model:
+  context_length: 512
+  vocab_size: 65536
+  d_model: 128
+  num_layers: 2
+  num_heads: 2
+  d_ff: 512
+  theta: 10000.0
+
+data:
+  train: data/train
+  valid: data/valid
+
+training:
+  num_epochs: 50
+  batch_size: 32
+  learning_rate: 6.0e-4
+  weight_decay: 0.1
+  warmup_steps: 1000
+  lr_decay_steps: 100000
+  gradient_clip: 1.0
+
+checkpoint:
+  save_interval: 500
+  save_dir: checkpoints
+  use_flash_attention: true
+
+device: cuda
+dtype: float32
+
+wandb:
+  project: "transformer_from_scratch"
+  run_name: "default_run"
