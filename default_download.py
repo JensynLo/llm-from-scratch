@@ -36,6 +36,10 @@ class DownloadProgressBar(tqdm):
             self.total = tsize
         self.update(b * bsize - self.n)
 
+opener = urllib.request.build_opener()
+opener.addheaders = [('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')]
+urllib.request.install_opener(opener)
+
 print("--- 开始下载静态文件 ---")
 for task in download_tasks:
     dest_path = task["dest"]
@@ -78,15 +82,5 @@ print("1. 加载 roneneldan/TinyStories ...")
 ds_tiny = load_dataset("roneneldan/TinyStories")
 export_dataset_to_txt(ds_tiny["train"], "data/tokenizer/TinyStoriesV2-GPT4-train.txt")
 export_dataset_to_txt(ds_tiny["validation"], "data/tokenizer/TinyStoriesV2-GPT4-valid.txt")
-
-# OpenWebText
-print("2. 加载 Skylion007/openwebtext ...")
-ds_owt = load_dataset("Skylion007/openwebtext", split="train")
-
-print("划分 OpenWebText 训练集和验证集...")
-owt_splits = ds_owt.train_test_split(test_size=0.005, seed=42)
-
-export_dataset_to_txt(owt_splits["train"], "data/tokenizer/owt_train.txt")
-export_dataset_to_txt(owt_splits["test"], "data/tokenizer/owt_valid.txt")
 
 print("\n🎉 所有任务处理完毕！文件已全部放置在指定的 data/raw 和 data/tokenizer 目录中。")

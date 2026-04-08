@@ -13,7 +13,7 @@ conda activate $ENV_NAME
 
 echo "开始安装 PyTorch (CUDA 13.0) ..."
 # 3. 显式安装带有特殊源的 PyTorch
-pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu130
+pip3 install torch --index-url https://download.pytorch.org/whl/cu130
 
 echo "开始安装其他 pip 依赖 ..."
 # 4. 安装剩余的 pip 包

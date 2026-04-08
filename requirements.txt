@@ -191,7 +191,6 @@ tornado==6.5.4
 tqdm==4.67.3
 traitlets==5.14.3
 transformers==5.2.0
-triton==3.6.0
 typer==0.24.1
 typer-slim==0.24.0
 typing-inspection==0.4.2
