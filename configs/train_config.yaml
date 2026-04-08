@@ -1,10 +1,10 @@
 model:
   context_length: 512
   vocab_size: 65536
-  d_model: 128
-  num_layers: 2
-  num_heads: 2
-  d_ff: 512
+  d_model: 384
+  num_layers: 8
+  num_heads: 8
+  d_ff: 1536
   theta: 10000.0
 
 data:
@@ -12,18 +12,19 @@ data:
   valid: data/valid
 
 training:
-  num_epochs: 50
-  batch_size: 32
-  learning_rate: 6.0e-4
-  weight_decay: 0.1
+  num_epochs: 30
+  batch_size: 16
+  learning_rate: 2.0e-4
+  weight_decay: 0.3
   warmup_steps: 1000
   lr_decay_steps: 100000
   gradient_clip: 1.0
 
 checkpoint:
-  save_interval: 500
+  save_interval: 300
   save_dir: checkpoints
   use_flash_attention: true
+  patience: 5
 
 device: cuda
 dtype: float32

@@ -3,11 +3,13 @@ data:
   output_dir: output
 
 paths:
-  urls_path: data/data/enwiki-20240420-extracted_urls.txt
+  urls_path: data/raw/enwiki-20240420-extracted_urls.txt
+  toxic_path: data/raw/jigsaw_fasttext_bigrams_hatespeech_final.bin
+  nsfw_path: data/raw/jigsaw_fasttext_bigrams_nsfw_final.bin
 
 output:
   webpage_file_name: webpage_temp.txt
-  webpage_cleaned_file_name: wabpage_temp_cleaned.txt
+  webpage_cleaned_file_name: webpage_temp_cleaned.txt
 
 clean:
   chunk_size: 1000
