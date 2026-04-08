@@ -64,14 +64,13 @@ chmod +x init.sh
 - [NSFW](https://dolma-artifacts.org/fasttext_models/jigsaw_fasttext_bigrams_20230515/jigsaw_fasttext_bigrams_nsfw_final.bin)
 - [TOXIC](https://dolma-artifacts.org/fasttext_models/jigsaw_fasttext_bigrams_20230515/jigsaw_fasttext_bigrams_hatespeech_final.bin)
 - [enwiki](https://downloads.cs.stanford.edu/nlp/data/nfliu/cs336-spring-2024/assignment4/enwiki-20240420-extracted_urls.txt.gz)
-- [OpenWebText](https://huggingface.co/datasets/Skylion007/openwebtext)
 - [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories)
 
 **NSFW** 和 **TOXIC** 模型来自 [Soldaini et al.][2] 提供的 `fasttext` 预训练模型，用来判断文本的毒性和NSFW内容。
 
 [**enwiki**][1] 包含了从英文维基百科提取的URL列表。
 
-[**OpenWebText**][3] 和 [**TinyStories**][4] 用来训练分词器。
+[**TinyStories**][3] 用来训练分词器。
 
 ## 📊 配置文件
 
@@ -144,7 +143,7 @@ data:
 
 tokenizer:
   vocab_size: 65536 # 词表大小
-  special_tokens: ["<|endoftext|>"] # 特殊标记(如果您选择 [openwebtext][3]，请使用 "\n" 作为特殊标记)
+  special_tokens: ["|<|endoftext|>"]  # 特殊标记列表，默认包含 <|endoftext|>
 
 output:
   train_file_path: "data/train" # 训练数据输出路径
@@ -175,7 +174,7 @@ evaluation:
 device: cuda # 推理设备
 ```
 
-若保留默认配置(`configs/**.json`),将使用 [TinyStories][4] 作为分词器训练数据，并使用 `<|endoftext|>` 作为特殊标记。
+若保留默认配置(`configs/**.json`),将使用 [TinyStories][3] 作为分词器训练数据，并使用 `<|endoftext|>` 作为特殊标记。
 
 ### 数据处理
 
@@ -237,5 +236,4 @@ MIT License
 
 [1]: https://cs336.stanford.edu/
 [2]: https://huggingface.co/datasets/thesofakillers/jigsaw-toxic-comment-classification-challenge
-[3]: https://skylion007.github.io/OpenWebTextCorpus
-[4]: https://arxiv.org/abs/2305.07759
+[3]: https://arxiv.org/abs/2305.07759
